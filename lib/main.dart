@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(MaterialApp(
@@ -13,6 +14,39 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  var _frases = [
+    "Faça sempre o seu melhor!",
+    "Acredite que o melhor possa ser feito!",
+    "Não espere, ponha em prática!",
+    "Mesmo que pareça difícil, não pare!",
+    "Só trabalhando é possível trilhar o caminho!",
+    "Tenha coragem!",
+    "Descubra quem você realmente é…",
+    "E se aceite!",
+    "Não espere que as respostas caiam do céu!",
+    "Aprenda a lidar com as situações do melhor jeito!",
+    "Veja sempre o que há de positivo nas coisas!",
+    "Não seja vítima das dificuldades, tente ultrapassá-las!",
+    "Nunca perca a esperança!",
+    "Você não precisa de muito para construir um mundo melhor!",
+    "Nunca esqueça que a sua felicidade não depende de mais ninguém!",
+    "Desistir à primeira é para os fracos, tente sempre mais uma vez!",
+    "Enxergue outros pontos de vista, e tenha sempre presente o objetivo final!",
+    "Se motive com as conquistas pessoais e não em bater os outros",
+    "Busque inspiração nas pequenas coisas e gestos",
+    "A receita para o sucesso está no equilíbrio!"
+  ];
+
+  var _fraseGerada = "Clique abaixo para gerar uma frase";
+
+  void _gerarFrase(){
+    var numeroSorteado = Random().nextInt(_frases.length);
+    setState(() {
+      _fraseGerada = _frases[numeroSorteado];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +64,16 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset("imagens/Ceu-azul.jpg"),
             Text(
-              "Clique aqui para gerar uma frase",
+              "Olá",
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  backgroundColor: Colors.deepPurple,
+              ),
+            ),
+            Text(
+              _fraseGerada,
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontSize: 17,
@@ -48,8 +89,8 @@ class _HomeState extends State<Home> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              color: Colors.greenAccent,
-              onPressed: () {},
+              color: Colors.deepPurple,
+              onPressed: _gerarFrase,
             )
           ],
         ),
